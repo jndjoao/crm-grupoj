@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CRM | Grupo J Auto App</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="login" hidden>
+  <div class="lbox">
+    <img src="logo.png" alt="Grupo J Auto App">
+    <h1>Acesso ao CRM comercial</h1>
+    <input id="lemail" type="email" placeholder="E-mail" autocomplete="username">
+    <input id="lsenha" type="password" placeholder="Senha" autocomplete="current-password">
+    <button class="btn" id="lbtn">Entrar</button>
+    <p id="lerr" class="late"></p>
+  </div>
+</div>
+
+<div id="app" hidden>
+  <header class="hdr"><div class="hin">
+    <img src="logo.png" alt="Grupo J Auto App" class="logo">
+    <span class="crm">CRM Comercial</span>
+    <div class="sp"></div>
+    <div class="acts">
+      <button class="btn g" id="imp">Importar CSV</button><input type="file" id="file" accept=".csv,text/csv" hidden>
+      <button class="btn g" id="exp">Exportar CSV</button>
+      <button class="btn g" id="out">Sair</button>
+      <button class="btn" id="novo">+ Novo lead</button>
+    </div>
+  </div></header>
+
+  <main class="w">
+    <div class="funis" id="funis">
+      <button class="on" data-f="cliente">Funil de Clientes <i id="nc">0</i></button>
+      <button data-f="oficina">Funil de Oficinas <i id="no">0</i></button>
+    </div>
+    <div class="kpis" id="kpis"></div>
+    <div class="tool">
+      <div class="bar">
+        <input id="q" placeholder="Buscar nome, empresa, telefone...">
+        <select id="fT"><option value="">Todas as temperaturas</option><option>Quente</option><option>Morno</option><option>Frio</option></select>
+        <select id="fO"><option value="">Todas as origens</option></select>
+      </div>
+      <div class="tabs"><button class="on" data-v="b">Funil</button><button data-v="l">Lista</button><button data-v="a">Follow-ups</button></div>
+    </div>
+    <div id="view"></div>
+  </main>
+</div>
+
+<dialog id="dlg">
+  <div class="dh"><h2 id="dt">Novo lead</h2><button class="dx" id="x" aria-label="Fechar">&times;</button></div>
+  <div class="db"><div class="f" id="form">
+    <label class="full">Funil<select id="tipo"></select></label>
+    <label>Nome*<input id="nome"></label>
+    <label>Empresa<input id="empresa"></label>
+    <label>WhatsApp / Telefone<input id="tel" inputmode="tel"></label>
+    <label>E-mail<input id="email" type="email"></label>
+    <label>Origem<select id="origem"></select></label>
+    <label>Etapa do funil<select id="etapa"></select></label>
+    <label>Produto / interesse<input id="interesse"></label>
+    <label>Valor estimado (R$)<input id="valor" type="number" min="0" step="0.01"></label>
+    <label>Próximo contato<input id="prox" type="date"></label>
+    <label>Motivo da perda<input id="motivo" placeholder="Só se perdido"></label>
+    <div class="bant">
+      <p>Qualificação (BANT): cada item vale 25 pontos</p>
+      <label><input type="checkbox" id="b1"><span id="bl1"></span></label>
+      <label><input type="checkbox" id="b2"><span id="bl2"></span></label>
+      <label><input type="checkbox" id="b3"><span id="bl3"></span></label>
+      <label><input type="checkbox" id="b4"><span id="bl4"></span></label>
+    </div>
+    <label class="full">Observações<textarea id="obs" rows="3"></textarea></label>
+  </div></div>
+  <div class="act">
+    <button class="btn g d" id="del">Excluir</button>
+    <span><button class="btn g" id="cancel">Cancelar</button> <button class="btn" id="save">Salvar</button></span>
+  </div>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

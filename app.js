@@ -90,9 +90,9 @@ function kpis(){
   const soma=L=>brl(L.reduce((a,l)=>a+(+l.valor||0),0));
   const nC=leads.filter(l=>tipoDe(l)==='cliente').length,nO=leads.length-nC;
   const v=[[leads.length,`Total nos dois funis<br>${nC} clientes · ${nO} oficinas`],[A.length,'Total neste funil'],
-    funil==='cliente'?[soma(abertos),'Em negociação']:[abertos.length,'Em andamento'],
+    [soma(abertos),funil==='cliente'?'Em negociação':`Valor em negociação<br>${abertos.length} oficinas em andamento`],
     [quentes,'Leads quentes'],
-    funil==='cliente'?[soma(g),f.ganhoLbl]:[g.length,f.ganhoLbl],
+    [soma(g),funil==='cliente'?f.ganhoLbl:`Valor credenciado<br>${g.length} oficinas credenciadas`],
     [conv,'Conversão'],[at,'Follow-ups atrasados']];
   $('kpis').innerHTML=v.map(([a,b])=>`<div class="k"><b>${a}</b><span>${b}</span></div>`).join('');
   $('nc').textContent=nC;
